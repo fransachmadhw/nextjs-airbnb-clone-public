@@ -30,7 +30,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     <CldUploadWidget
       onUpload={handleUpload}
       options={{
-        maxFiles: 1,
+        maxFiles: 3,
       }}
       uploadPreset={uploadPreset}
     >
@@ -44,11 +44,11 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               hover:opacity-70
               transition
               p-20
-              border-neutral-300
+
               ${
                 value
-                  ? 'border-none border-0'
-                  : 'border-dashed border-2'
+                  ? 'border-0 border-transparent'
+                  : 'border-dashed border-2 border-neutral-300'
               }
               flex
               flex-col
@@ -56,6 +56,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               items-center
               gap-4
               text-neutral-600
+              text-center
+              h-[250px]
             `}
           >
             <TbPhotoPlus size={50} />

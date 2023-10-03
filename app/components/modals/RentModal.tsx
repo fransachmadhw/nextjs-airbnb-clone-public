@@ -46,6 +46,8 @@ const RentModal = () => {
       roomCount: 1,
       bathroomCount: 1,
       imageSrc: '',
+      imageSrc2: '',
+      imageSrc3: '',
       price: 1,
       title: '',
       description: '',
@@ -58,6 +60,8 @@ const RentModal = () => {
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
   const imageSrc = watch('imageSrc');
+  const imageSrc2 = watch('imageSrc2');
+  const imageSrc3 = watch('imageSrc3');
 
   const Map = useMemo(
     () =>
@@ -85,7 +89,7 @@ const RentModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     if (step !== STEPS.PRICE) return onNext();
-
+    console.log(data);
     setIsLoading(true);
 
     axios
@@ -192,10 +196,22 @@ const RentModal = () => {
           title="Add a photo of your place"
           subtitle="Show guests what your place looks like!"
         />
-        <ImageUpload
-          onChange={(value) => setCustomValue('imageSrc', value)}
-          value={imageSrc}
-        />
+        <div className="w-full flex flex-col gap-2">
+          <ImageUpload
+            onChange={(value) => setCustomValue('imageSrc', value)}
+            value={imageSrc}
+          />
+          <div className="w-full grid grid-cols-2 gap-2">
+            <ImageUpload
+              onChange={(value) => setCustomValue('imageSrc2', value)}
+              value={imageSrc2}
+            />
+            <ImageUpload
+              onChange={(value) => setCustomValue('imageSrc3', value)}
+              value={imageSrc3}
+            />
+          </div>
+        </div>
       </div>
     );
   }
